@@ -25,10 +25,10 @@ class MemosController < ApplicationController
   # POST /memos.json
   def create
     @memo = Memo.new(memo_params)
-
+    @memo.user = current_user
     respond_to do |format|
       if @memo.save
-        format.html { redirect_to @memo, notice: 'Memo was successfully created.' }
+        format.html { redirect_to @memo, notice: 'Memo was added.' }
         format.json { render :show, status: :created, location: @memo }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MemosController < ApplicationController
   def update
     respond_to do |format|
       if @memo.update(memo_params)
-        format.html { redirect_to @memo, notice: 'Memo was successfully updated.' }
+        format.html { redirect_to @memo, notice: 'Memo was updated.' }
         format.json { render :show, status: :ok, location: @memo }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class MemosController < ApplicationController
   def destroy
     @memo.destroy
     respond_to do |format|
-      format.html { redirect_to memos_url, notice: 'Memo was successfully destroyed.' }
+      format.html { redirect_to memos_url, notice: 'Memo was deleted.' }
       format.json { head :no_content }
     end
   end
