@@ -4,7 +4,7 @@ class MemosController < ApplicationController
   # GET /memos
   # GET /memos.json
   def index
-    @memos = Memo.all
+    @memos = Memo.all.order("created_at DESC")
   end
 
   # GET /memos/1

@@ -1,19 +1,23 @@
 <h1>Memos</h1>
   <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th colspan="2">Actions</th>
-      </tr>
-    </thead>
-
     <tbody>
       <% @memos.each do |memo| %>
         <tr>
           <% @memoUser = User.find(memo.user_id) %>
-          <td><%= link_to memo.title, memo %></td>
-          <td><%= link_to @memoUser.email, @memoUser %></td>
+          <td>
+            <%= link_to memo.title, memo %>
+            <p style="margin-top:10px;">
+              <small>
+                <%= "Added #{time_ago_in_words(memo.created_at)} ago" %>
+              </small>
+            </p>
+          </td>
+          <td>
+            <div class="col-sm-12 text-center">
+            <img style="margin-bottom:5px;" src="<%= asset_path('no_avatar.png') %>" width="80px" alt="" class="center-block img-circle img-thumbnail img-responsive">
+            <p><small><%= link_to "#{@memoUser.first_name} #{@memoUser.last_name}", @memoUser %></small></p>
+            </div>
+          </td>
           <td><%= link_to 'Edit', edit_memo_path(memo) %></td>
           <td><%= link_to 'Delete', memo, method: :delete, data: { confirm: 'Are you sure?' },
           :remote => true, :class => 'delete_memo' %></td>
