@@ -4,6 +4,17 @@ Rails.application.routes.draw do
   root 'memos#index'
 
   get 'users/:id' => 'users#show', :as => :user
+  resources :users do
+    member do
+      get 'index'
+    end
+  end
+  post '/memos/:id' => 'memos#complete'
+  resources :memos do
+    member do
+      get 'duplicate'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
