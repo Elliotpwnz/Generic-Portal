@@ -1,0 +1,20 @@
+<h1>Users</h1>
+  <table class="table table-striped">
+    <% @userNumber = 0 %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <% @userNumber += 1 %>
+          <td><%= "#{@userNumber}" %></td>
+          <td><%= link_to "#{user.first_name} #{user.last_name}", user %></td>
+          <td><%= "#{user.email}" %></td>
+          <td>Skills:
+              <span class="label label-info tags">html5</span>
+              <span class="label label-info tags">css3</span>
+              <span class="label label-info tags">jquery</span>
+              <span class="label label-info tags">bootstrap3</span>
+          </td>
+          <!-- <td><img style="margin-bottom:5px;" src="<%= asset_path('no_avatar.png') %>" width="150px" alt="" class="center-block img-circle img-thumbnail img-responsive"><td> -->
+      <% end %>
+    </tbody>
+  </table>

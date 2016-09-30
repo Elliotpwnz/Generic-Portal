@@ -1,5 +1,5 @@
 class MemosController < ApplicationController
-  before_action :set_memo, only: [:show, :edit, :update, :destroy]
+  before_action :set_memo, only: [:show, :edit, :update, :destroy, :complete, :duplicate]
 
   # GET /memos
   # GET /memos.json
@@ -59,6 +59,24 @@ class MemosController < ApplicationController
       format.html { redirect_to memos_url, notice: 'Memo was deleted.' }
       format.json { head :no_content }
     end
+  end
+
+  #COMPLETE
+  #Method should eventaully move to a completed memos database or just have a vale changed
+  def complete
+    @memo.destroy
+    respond_to do |format|
+      format.html { redirect_to memos_url, notice: 'Memo was Completed and Removed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  #DUPLICATE
+  #Method goes to form with info already filled out so memo can be edited if needed
+  def duplicate
+    template = Memo.find(params[:id])
+    @memo = template.dup
+    render action: 'new'
   end
 
   private
