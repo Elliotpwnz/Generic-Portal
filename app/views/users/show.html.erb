@@ -1,19 +1,15 @@
-<style>
-  #mainContainer{
-    width: 800px;
-  }
-</style>
-
 <!-- This code was originally cloned from http://bootstrap.snipplicious.com/snippet/20/user-profile -->
 <!-- This code may have undergone significant changes from the original. -->
 <div class="row">
 <div class="col-md-10 col-md-offset-1">
   <div class="row">
-  	<% if @user == current_user %><div style="margin-bottom:15px;"><h1>My profile</h1></div><% end %>
+  	<% if @user == current_user %>
+      <div style="margin-bottom:15px;"><h1>My profile</h1></div>
+    <% end %>
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-4 text-center">
-      <img style="margin-bottom:5px;" src="<%= asset_path('no_avatar.png') %>" width="150px" alt="" class="center-block img-circle img-thumbnail img-responsive">
+      <img style="margin-bottom:5px;" src="<%= @user.photo.url %>" width="150px" alt="" class="center-block img-circle img-thumbnail img-responsive">
       <p><small>Joined <%= @user.created_at.strftime("%b %e, %Y") %></small></p>
       <ul class="list-inline ratings text-center" title="Ratings">
         <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>

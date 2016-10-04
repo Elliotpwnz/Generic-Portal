@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Paperclip for image upload
+gem 'paperclip', '~> 4.1'
 # Devise user authentication
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

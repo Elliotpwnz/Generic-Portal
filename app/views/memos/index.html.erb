@@ -14,7 +14,7 @@
           </td>
           <td>
             <div class="col-sm-12 text-center">
-            <img style="margin-bottom:5px;" src="<%= asset_path('no_avatar.png') %>" width="80px" alt="" class="center-block img-circle img-thumbnail img-responsive">
+            <img style="margin-bottom:5px;" src="<%= @memoUser.photo.url %>" width="80px" alt="" class="center-block img-circle img-thumbnail img-responsive">
             <p><small><%= link_to "#{@memoUser.first_name} #{@memoUser.last_name}", @memoUser %></small></p>
             </div>
           </td>
